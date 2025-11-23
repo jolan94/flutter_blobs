@@ -28,7 +28,9 @@ class BlobGenerator {
       minGrowth = int.parse(datum[1]);
       id = datum[2];
     }
-    if (edgesCount! <= 2) throw InvalidEdgesCountException();
+    if (edgesCount! <= 2 || edgesCount! > 300) {
+      throw InvalidEdgesCountException(edgesCount!);
+    }
     var points = _createPoints(id != null ? int.parse(id!) : null);
     BlobCurves curves = _createCurves(points.destPoints!);
     Path path = connectPoints(curves);

@@ -4,35 +4,52 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          brightness: Brightness.light,
+        ),
         textTheme: GoogleFonts.manropeTextTheme(
           Theme.of(context).textTheme.apply(
-                bodyColor: Color(0xff596275),
+                bodyColor: const Color(0xff596275),
               ),
         ),
       ),
-      home: Examples(), // Examples() for all demo
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          brightness: Brightness.dark,
+        ),
+        textTheme: GoogleFonts.manropeTextTheme(
+          ThemeData.dark().textTheme,
+        ),
+      ),
+      themeMode: ThemeMode.system,
+      home: const Examples(), // Examples() for all demo
     );
   }
 }
 
 class BasicExample extends StatelessWidget {
-  const BasicExample({Key? key}) : super(key: key);
+  const BasicExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    BlobController blobCtrl = BlobController();
+    final blobCtrl = BlobController();
     return Scaffold(
-      appBar: AppBar(title: Text('Blobs Example')),
+      appBar: AppBar(title: const Text('Blobs Example')),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -43,12 +60,12 @@ class BasicExample extends StatelessWidget {
                 controller: blobCtrl,
               ),
             ),
-            FlatButton(
-              child: Text('Randomize'),
+            ElevatedButton(
               onPressed: () {
                 BlobData blobData = blobCtrl.change();
                 print(blobData);
               },
+              child: const Text('Randomize'),
             ),
           ],
         ),

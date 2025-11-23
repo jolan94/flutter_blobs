@@ -1,19 +1,42 @@
-nclude: package:pedantic/analysis_options.yaml
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-raw-types: true
+
 linter:
   rules:
+    # Modern best practices
+    - prefer_const_constructors
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - prefer_final_fields
+    - prefer_final_locals
+    - require_trailing_commas
+    - use_super_parameters
+    - unnecessary_null_checks
+    - use_colored_box
+    - use_decorated_box
+
+    # Style
     - camel_case_types
     - library_names
     - file_names
     - library_prefixes
     - non_constant_identifier_names
     - constant_identifier_names
-    # - directives_ordering
-    - lines_longer_than_80_chars
     - curly_braces_in_flow_control_structures
-    - avoid_relative_lib_imports
-    - prefer_adjacent_string_concatenation
-    - prefer_interpolation_to_compose_strings
-    - unnecessary_brace_in_string_interps
+
+    # Documentation
+    - package_api_docs
+    - public_member_api_docs
+
+    # Error handling
+    - use_rethrow_when_possible
+    - avoid_catches_without_on_clauses
+
+    # Functional
     - prefer_collection_literals
     - prefer_iterable_whereType
     - prefer_function_declarations_over_variables
@@ -27,16 +50,6 @@ linter:
     - empty_constructor_bodies
     - unnecessary_new
     - unnecessary_const
-    - avoid_catches_without_on_clauses
-    - use_rethrow_when_possible
-    - use_to_and_as_if_applicable
-    - one_member_abstracts
-    - avoid_classes_with_only_static_members
-    - prefer_final_fields
-    - use_setters_to_change_properties
-    - avoid_setters_without_getters
-    - avoid_returning_null
-    - avoid_returning_this
     - prefer_typing_uninitialized_variables
     - avoid_return_types_on_setters
     - prefer_generic_function_type_aliases
@@ -44,3 +57,9 @@ linter:
     - avoid_positional_boolean_parameters
     - hash_and_equals
     - avoid_null_checks_in_equality_operators
+    - avoid_relative_lib_imports
+    - prefer_adjacent_string_concatenation
+    - prefer_interpolation_to_compose_strings
+    - unnecessary_brace_in_string_interps
+    - use_setters_to_change_properties
+    - avoid_setters_without_getters
